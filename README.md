@@ -1,4 +1,4 @@
-![Joan Iduemre](profile.png)
+![Joan Iduemre](joan-iduemre.png)
 
 # My Programming Journey
 
