@@ -13,7 +13,6 @@ I strongly believe in the power of collaboration and peer-to-peer learning. I am
 
 ## Projects
 
-
 Here are some of the projects I have worked on:
 
 1. [Learning GitHub](https://joan-iduemre.github.io/learning-github)
