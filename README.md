@@ -28,11 +28,8 @@ If you have any questions, suggestions, or just want to connect, please feel fre
 Thank you for visiting my GitHub repository and joining me on this exciting path of becoming a proficient programmer. Let's code and create amazing things together!
 
 
-
-
-
 <!--
- ### Hi there 👋 
+ ### Hi there 👋
 
 **joan-iduemre/joan-iduemre** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
