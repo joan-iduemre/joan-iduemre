@@ -19,7 +19,7 @@ Here are some of the projects I have worked on:
 
 1. [Learning GitHub](https://joan-iduemre.github.io/learning-github)
    - Repository: [joan-iduemre/learning-github](https://github.com/joan-iduemre/learning-github)
-   - [View the webpage live] (https://joan-iduemre.github.io/learning-github)
+<!--    - [View the webpage live] (https://joan-iduemre.github.io/learning-github) -->
    - Description: This is a simple signup page where I practiced and learned the basics of GitHub. It was a great hands-on experience to understand version control, repository management, and collaboration using Git and GitHub.
 
 I will be sharing more projects as time goes to demonstrate my growth and showcase my skills. Feel free to explore, provide feedback, and suggest improvements. Let's learn and grow together!
