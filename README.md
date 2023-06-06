@@ -1,4 +1,6 @@
-# Joan Iduemre's Programming Journey
+![Joan Iduemre](profile.png)
+
+# My Programming Journey
 
 Welcome to my GitHub repository! I'm Joan Iduemre, a newbie in the world of programming and aspiring to break into the tech industry. Here, I document my learning process and showcase my projects as I embark on this exciting journey.
 
