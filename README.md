@@ -37,6 +37,16 @@ Thank you for visiting my GitHub repository and joining me on this exciting path
 
 
 
+
+
+3. [Cafe Menu](https://joan-iduemre.github.io/cafe-menu)
+   - Repository: [joan-iduemre/cafe-menu](https://github.com/joan-iduemre/cafe-menu)
+   - Description: The Cafe Menu project is a simple HTML code that showcases a cafe menu with various coffee options and their corresponding prices. By exploring and working on this project, I have gained a better understanding of HTML and its elements. Through writing and structuring the HTML code for the cafe menu, I have learned how to create headings, lists, and sections to organize the content effectively. Additionally, I have practiced using HTML tags to display text, images, and links within the menu. This project has served as a hands-on experience that has deepened my knowledge and proficiency in HTML.
+
+Working on the Cafe Menu project has provided me with practical experience in web development using HTML. It has allowed me to apply the concepts and techniques learned in HTML to a real-world scenario. By customizing and modifying the code, I have enhanced my skills in HTML syntax, element manipulation, and styling. This project has been instrumental in honing my HTML abilities and has contributed significantly to my growth as a web developer.
+
+
+
 <!--
  ### Hi there 👋 
 
