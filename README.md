@@ -17,10 +17,59 @@ I strongly believe in the power of collaboration and peer-to-peer learning. I am
 
 Here are some of the projects I have worked on:
 
-1. [Learning GitHub](https://joan-iduemre.github.io/learning-github)
-   - Repository: [joan-iduemre/learning-github](https://github.com/joan-iduemre/learning-github)
-<!--    - [View the webpage live] (https://joan-iduemre.github.io/learning-github) -->
-   - Description: This is a simple signup page where I practiced and learned the basics of GitHub. It was a great hands-on experience to understand version control, repository management, and collaboration using Git and GitHub.
+1. [Formify](https://joan-iduemre.github.io/formify)
+   - Repository: [joan-iduemre/formify](https://github.com/joan-iduemre/formify)
+   - Description: Formify is a simple signup form page that serves as a practical project for learning HTML, CSS, and familiarizing oneself with the fundamental concepts of Git and GitHub. Through this repository, I gained valuable hands-on experience in version control, repository management, and collaboration techniques using Git and GitHub. Furthermore, I had the opportunity to explore the setup of a CI/CD pipeline using GitHub Pages.
+
+By working on Formify, I deepened my understanding of web development, acquired essential skills in using HTML and CSS, and practiced using Git and GitHub effectively. This project allowed me to apply theoretical knowledge to a real-world scenario, fostering a practical and comprehensive learning experience.
+
+2. [Cat App](https://joan-iduemre.github.io/cat-app)
+   - Repository: [joan-iduemre/cat-app](https://github.com/joan-iduemre/cat-app)
+   - Description:
+   
+   
+   
+   
+   # Cat-App Repository
+
+Repository: [joan-iduemre/cat-app](https://github.com/joan-iduemre/cat-app)
+
+## Description
+
+The Cat-App repository is a project that showcases a simple HTML page featuring cat photos, lists, and a submission form. The purpose of this project is to provide an interactive experience for users to explore cat-related content.
+
+## Files
+
+- `index.html`: The main HTML file that displays the cat photos, lists, and submission form.
+- `styles.css`: The CSS file that controls the styling of the HTML elements.
+- `.gitattributes`: Configuration file for Git.
+- `.nojekyll`: File used to disable Jekyll processing on GitHub Pages.
+- `LICENSE`: The license file for the repository.
+
+## Features
+
+The HTML page offers the following features:
+
+- Cat Photos: Users can browse a gallery of cat photos and click on the provided link to see more.
+- Cat Lists: Two lists are included—one showcasing things that cats love and the other highlighting the top three things cats hate.
+- Cat Form: Users can fill out the form to submit their own cat photo, specifying whether their cat is indoor or outdoor and indicating the cat's personality.
+
+## Usage
+
+The Cat-App project provides a basic introduction to HTML and CSS, allowing users to navigate through cat photos, view cat-related lists, and contribute their own cat photos. It is a simple and engaging project for cat enthusiasts to enjoy.
+
+## License
+
+The Cat-App repository is released under the MIT license.
+
+
+   
+   
+   
+   
+   
+
+
 
 I will be sharing more projects as time goes to demonstrate my growth and showcase my skills. Feel free to explore, provide feedback, and suggest improvements. Let's learn and grow together!
 ## Get in Touch
