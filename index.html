@@ -1,296 +1,704 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joan Iduemre — Programming Journey</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#FAF7EF;
-    --ink:#1F2A1E;
-    --moss:#2F4F33;
-    --sprout:#7CB342;
-    --sprout-soft:#E4EFD6;
-    --clay:#C7724C;
-    --line: rgba(31,42,30,0.14);
-    --maxw: 880px;
-  }
 
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Space Grotesk', sans-serif;
-    line-height:1.6;
-  }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="Joan Iduemre — Aspiring Frontend Developer documenting my learning journey through hands-on projects in HTML, CSS, and Git.">
+        <meta name="author" content="Joan Iduemre">
+        <title>Joan Iduemre | Aspiring Frontend Developer</title>
 
-  ::selection{background:var(--sprout-soft); color:var(--moss);}
+        <!-- Open Graph / Social -->
+        <meta property="og:title" content="Joan Iduemre | Aspiring Frontend Developer">
+        <meta property="og:description"
+            content="Documenting my journey learning frontend development through real projects.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://joan-iduemre.github.io">
+        <meta property="og:image" content="https://joan-iduemre.github.io/joan-iduemre.png">
 
-  h1,h2,h3{
-    font-family:'Fraunces', serif;
-    margin:0;
-    color:var(--moss);
-    letter-spacing:-0.01em;
-  }
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  a{color:var(--moss);}
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap');
 
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+            :root {
+                --accent: 234 179 8;
+            }
 
-  /* ---------- Nav ---------- */
-  nav{
-    position:sticky; top:0; z-index:10;
-    background:rgba(250,247,239,0.85);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
-  .brand{font-family:'Fraunces', serif; font-weight:600; font-size:1.1rem; color:var(--ink);}
-  .brand em{font-style:normal; color:var(--sprout);}
-  nav ul{list-style:none; display:flex; gap:28px; margin:0; padding:0;}
-  nav a{text-decoration:none; color:var(--ink); font-size:0.92rem; font-weight:500; opacity:0.8; transition:opacity .15s;}
-  nav a:hover, nav a:focus-visible{opacity:1;}
+            .tail-container {
+                font-family: 'Inter', system_ui, sans-serif;
+            }
 
-  /* ---------- Hero ---------- */
-  header.hero{padding:84px 0 64px; position:relative; overflow:hidden;}
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:8px;
-    font-size:0.82rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
-    color:var(--moss); background:var(--sprout-soft);
-    padding:6px 14px; border-radius:999px; margin-bottom:22px;
-  }
-  .eyebrow::before{content:"●"; color:var(--sprout); font-size:0.6rem;}
+            .heading-font {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+            }
 
-  .hero-grid{display:grid; grid-template-columns: 1fr auto; gap:40px; align-items:center;}
-  .hero h1{font-size:clamp(2.4rem, 5vw, 3.6rem); line-height:1.05; font-weight:600;}
-  .hero h1 .accent{color:var(--sprout); font-style:italic; font-weight:500;}
-  .hero p.lede{margin-top:20px; max-width:50ch; font-size:1.08rem; color:rgba(31,42,30,0.78);}
+            .hero-bg {
+                background: radial-gradient(at center bottom, rgba(234, 179, 8, 0.08), transparent 70%);
+            }
 
-  .avatar-frame{
-    width:148px; height:148px; border-radius:50%;
-    border:3px solid var(--moss);
-    padding:6px;
-    display:flex; align-items:center; justify-content:center;
-    position:relative;
-    flex-shrink:0;
-  }
-  .avatar-frame img{
-    width:100%; height:100%; object-fit:cover; border-radius:50%;
-    display:block;
-  }
-  .avatar-fallback{
-    width:100%; height:100%; border-radius:50%;
-    background:linear-gradient(155deg, var(--sprout-soft), var(--paper));
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Fraunces', serif; font-size:2.6rem; color:var(--moss); font-weight:600;
-  }
+            .nav-link {
+                transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            }
 
-  .hero-meta{display:flex; gap:28px; margin-top:36px; flex-wrap:wrap;}
-  .hero-meta div{font-size:0.85rem; color:rgba(31,42,30,0.6);}
-  .hero-meta strong{display:block; font-family:'Fraunces',serif; font-size:1.5rem; color:var(--ink); font-weight:600;}
+            .nav-link:hover {
+                color: rgb(234 179 8);
+                transform: translateY(-1px);
+            }
 
-  /* ---------- Section shell ---------- */
-  section{padding:56px 0;}
-  section + section{border-top:1px solid var(--line);}
-  .section-head{display:flex; align-items:baseline; gap:14px; margin-bottom:30px;}
-  .section-head .tag{font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--clay);}
-  .section-head h2{font-size:1.9rem; font-weight:600;}
+            .project-card {
+                transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            }
 
-  /* ---------- About ---------- */
-  .about p{max-width:62ch; font-size:1.02rem; color:rgba(31,42,30,0.85);}
+            .project-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            }
 
-  /* ---------- Goals ---------- */
-  .goal-card{
-    border:1px solid var(--line); border-radius:14px; padding:26px 28px;
-    background:#fff; display:flex; gap:18px; align-items:flex-start;
-  }
-  .goal-card .mark{
-    font-family:'Fraunces',serif; font-size:1.6rem; color:var(--sprout); flex-shrink:0; line-height:1;
-  }
-  .goal-card h3{font-size:1.15rem; margin-bottom:8px; font-weight:600;}
-  .goal-card p{margin:0; color:rgba(31,42,30,0.75); font-size:0.96rem;}
+            .timeline-dot {
+                transition: all 0.3s ease;
+            }
 
-  /* ---------- Projects ---------- */
-  .projects-grid{display:grid; gap:22px;}
-  .project-card{
-    border:1px solid var(--line); border-radius:16px; padding:30px 32px;
-    background:#fff; position:relative; transition:border-color .15s, transform .15s;
-  }
-  .project-card:hover{border-color:var(--sprout); transform:translateY(-2px);}
-  .project-card .pnum{
-    font-family:'Fraunces',serif; font-size:0.85rem; color:var(--clay); font-weight:600;
-    letter-spacing:0.04em;
-  }
-  .project-card h3{font-size:1.4rem; margin-top:6px; margin-bottom:12px; font-weight:600;}
-  .project-card p{color:rgba(31,42,30,0.78); font-size:0.97rem; margin:0 0 18px;}
-  .project-links{display:flex; gap:18px; flex-wrap:wrap;}
-  .project-links a{
-    font-size:0.88rem; font-weight:600; text-decoration:none;
-    border-bottom:1.5px solid var(--sprout); padding-bottom:2px;
-  }
-  .project-links a:hover{color:var(--sprout);}
+            .section-header {
+                position: relative;
+            }
 
-  /* ---------- Collaboration ---------- */
-  .collab{
-    background:var(--moss); color:#F4F1E8; border-radius:18px; padding:44px 40px;
-  }
-  .collab h2{color:#fff; font-size:1.7rem;}
-  .collab p{color:rgba(244,241,232,0.85); max-width:58ch; margin-top:14px; font-size:1rem;}
+            .section-header:after {
+                content: '';
+                position: absolute;
+                width: 48px;
+                height: 3px;
+                background: rgb(234 179 8);
+                bottom: -8px;
+                left: 0;
+                border-radius: 9999px;
+            }
 
-  /* ---------- Contact ---------- */
-  .contact{text-align:left;}
-  .contact h2{font-size:2rem;}
-  .contact p{color:rgba(31,42,30,0.78); max-width:50ch; margin-top:12px;}
-  .cta-row{display:flex; gap:16px; margin-top:26px; flex-wrap:wrap;}
-  .btn{
-    display:inline-block; text-decoration:none; font-weight:600; font-size:0.95rem;
-    padding:13px 26px; border-radius:10px; transition:opacity .15s, transform .15s;
-  }
-  .btn-primary{background:var(--moss); color:#fff;}
-  .btn-primary:hover{transform:translateY(-1px); opacity:0.92;}
-  .btn-ghost{border:1.5px solid var(--line); color:var(--ink);}
-  .btn-ghost:hover{border-color:var(--moss);}
+            .glass {
+                background: rgba(17, 17, 17, 0.7);
+                backdrop-filter: blur(16px);
+            }
+        </style>
+    </head>
 
-  footer{padding:32px 0 48px; border-top:1px solid var(--line);}
-  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
-  footer p{margin:0; font-size:0.85rem; color:rgba(31,42,30,0.55);}
+    <body class="tail-container bg-[#09090B] text-zinc-200">
+        <!-- NAVBAR -->
+        <nav id="navbar"
+            class="fixed top-0 left-0 right-0 z-50 glass border-b border-zinc-800 transition-all duration-300">
+            <div class="max-w-screen-2xl mx-auto px-6 py-5 flex items-center justify-between">
+                <div class="flex items-center gap-x-3">
+                    <div
+                        class="w-8 h-8 rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-600 flex items-center justify-center text-white font-bold text-xl leading-none pt-0.5">
+                        J</div>
+                    <span class="heading-font text-2xl font-semibold tracking-tighter">Joan Iduemre</span>
+                </div>
 
-  @media (max-width: 680px){
-    .hero-grid{grid-template-columns:1fr; gap:28px;}
-    .avatar-frame{order:-1;}
-    .hero-meta{gap:22px;}
-    nav ul{gap:16px;}
-    .collab{padding:32px 24px;}
-  }
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#home" onclick="smoothScrollTo('home')"
+                        class="nav-link text-zinc-400 hover:text-white">Home</a>
+                    <a href="#about" onclick="smoothScrollTo('about')"
+                        class="nav-link text-zinc-400 hover:text-white">About</a>
+                    <a href="#journey" onclick="smoothScrollTo('journey')"
+                        class="nav-link text-zinc-400 hover:text-white">Journey</a>
+                    <a href="#projects" onclick="smoothScrollTo('projects')"
+                        class="nav-link text-zinc-400 hover:text-white">Projects</a>
+                    <a href="#contact" onclick="smoothScrollTo('contact')"
+                        class="nav-link text-zinc-400 hover:text-white">Contact</a>
+                </div>
 
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{transition:none !important;}
-  }
-</style>
-</head>
-<body>
+                <div class="flex items-center gap-x-4">
+                    <a href="https://github.com/joan-iduemre" target="_blank"
+                        class="px-5 py-2.5 text-sm font-semibold border border-zinc-700 hover:border-amber-400 rounded-2xl flex items-center gap-x-2 transition-colors">
+                        <i class="fa-brands fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
 
-<nav>
-  <div class="wrap">
-    <div class="brand">Joan <em>Iduemre</em></div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#goals">Goals</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+                    <!-- Mobile Hamburger -->
+                    <button id="mobile-menu-button"
+                        class="md:hidden w-11 h-11 flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
 
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">Newbie developer, on the record</span>
-      <h1>Learning out loud,<br>one repo at a <span class="accent">time.</span></h1>
-      <p class="lede">I'm Joan Iduemre — new to programming, aiming for frontend development, and documenting every step here so the progress is impossible to fake and easy to follow.</p>
-      <div class="hero-meta">
-        <div><strong>3</strong>Projects shipped</div>
-        <div><strong>HTML/CSS/JS</strong>Current focus</div>
-        <div><strong>React · Vue</strong>Up next</div>
-      </div>
-    </div>
-    <div class="avatar-frame">
-      <div class="avatar-fallback">JI</div>
-    </div>
-  </div>
-</header>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-[#111] border-t border-zinc-800 py-4">
+                <div class="px-6 flex flex-col gap-y-6 text-lg">
+                    <a href="#home" onclick="toggleMobileMenu()" class="nav-link">Home</a>
+                    <a href="#about" onclick="toggleMobileMenu()" class="nav-link">About</a>
+                    <a href="#journey" onclick="toggleMobileMenu()" class="nav-link">Journey</a>
+                    <a href="#projects" onclick="toggleMobileMenu()" class="nav-link">Projects</a>
+                    <a href="#contact" onclick="toggleMobileMenu()" class="nav-link">Contact</a>
 
-<section id="about" class="about">
-  <div class="wrap">
-    <div class="section-head"><span class="tag">01</span><h2>About me</h2></div>
-    <p>I'm passionate about technology and what it can do for people's everyday lives. I'm dedicated to honing my skills across programming languages and frameworks — and I'd rather show the work in progress than wait for a polished version of myself.</p>
-  </div>
-</section>
+                    <div class="pt-4 border-t border-zinc-800">
+                        <a href="https://github.com/joan-iduemre" target="_blank"
+                            class="flex items-center justify-center gap-x-3 w-full py-4 bg-zinc-900 hover:bg-zinc-800 rounded-3xl">
+                            <i class="fa-brands fa-github text-xl"></i>
+                            <span class="font-medium">Visit my GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
-<section id="goals">
-  <div class="wrap">
-    <div class="section-head"><span class="tag">02</span><h2>What I'm working toward</h2></div>
-    <div class="goal-card">
-      <span class="mark">＋</span>
-      <div>
-        <h3>Frontend development, properly</h3>
-        <p>Mastering HTML, CSS, and JavaScript to build interfaces that feel good to use — then growing into a modern framework like React or Vue.js.</p>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- HERO -->
+        <section id="home" class="min-h-screen hero-bg flex items-center pt-16">
+            <div class="max-w-screen-2xl mx-auto px-6 grid md:grid-cols-12 gap-16 items-center">
+                <!-- Left Content -->
+                <div class="md:col-span-7 pt-12 md:pt-0">
+                    <div
+                        class="inline-flex items-center gap-x-2 px-4 py-2 rounded-3xl border border-amber-400/30 bg-amber-400/5 text-amber-400 text-sm mb-6">
+                        <div class="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
+                        Aspiring Frontend Developer
+                    </div>
 
-<section id="projects">
-  <div class="wrap">
-    <div class="section-head"><span class="tag">03</span><h2>Projects</h2></div>
-    <div class="projects-grid">
+                    <h1 class="heading-font text-6xl md:text-7xl font-semibold tracking-tighter leading-none mb-6">
+                        Building my first<br>web experiences,<br>one project at a time.
+                    </h1>
 
-      <article class="project-card">
-        <span class="pnum">Project 01</span>
-        <h3>Formify</h3>
-        <p>A simple signup form built to learn HTML, CSS, and the fundamentals of Git and GitHub — including setting up a CI/CD pipeline with GitHub Pages. First real practice with version control and repo management.</p>
-        <div class="project-links">
-          <a href="https://joan-iduemre.github.io/formify" target="_blank" rel="noopener">Live demo →</a>
-          <a href="https://github.com/joan-iduemre/formify" target="_blank" rel="noopener">Source code →</a>
-        </div>
-      </article>
+                    <p class="max-w-lg text-xl text-zinc-400 mb-10">
+                        I'm Joan Iduemre, passionate about technology and learning frontend development through
+                        consistent practice and real projects.
+                    </p>
 
-      <article class="project-card">
-        <span class="pnum">Project 02</span>
-        <h3>Cat App</h3>
-        <p>An interactive page of cat photos, lists, and a submission form. Visitors can browse a gallery, check out things cats love (and the top three they hate), and submit their own cat's photo and personality.</p>
-        <div class="project-links">
-          <a href="https://joan-iduemre.github.io/cat-app" target="_blank" rel="noopener">Live demo →</a>
-          <a href="https://github.com/joan-iduemre/cat-app" target="_blank" rel="noopener">Source code →</a>
-        </div>
-      </article>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects" onclick="smoothScrollTo('projects')"
+                            class="px-8 py-4 bg-white text-black font-semibold rounded-3xl flex items-center gap-x-3 hover:scale-105 transition-all">
+                            <span>View Projects</span>
+                            <i class="fa-solid fa-arrow-down text-sm"></i>
+                        </a>
 
-      <article class="project-card">
-        <span class="pnum">Project 03</span>
-        <h3>Cafe Menu</h3>
-        <p>A coffee shop menu built in plain HTML — headings, lists, and sections organizing drinks and prices. The project that sharpened my grip on HTML syntax, structure, and styling fundamentals.</p>
-        <div class="project-links">
-          <a href="https://joan-iduemre.github.io/cafe-menu" target="_blank" rel="noopener">Live demo →</a>
-          <a href="https://github.com/joan-iduemre/cafe-menu" target="_blank" rel="noopener">Source code →</a>
-        </div>
-      </article>
+                        <a href="https://github.com/joan-iduemre" target="_blank"
+                            class="px-8 py-4 border border-zinc-700 hover:border-white font-medium rounded-3xl flex items-center gap-x-3 transition-all">
+                            <i class="fa-brands fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
 
-    </div>
-  </div>
-</section>
+                    <div class="flex items-center gap-x-8 mt-16 text-sm">
+                        <div>
+                            <div class="text-amber-400 font-mono text-xl">3</div>
+                            <div class="text-zinc-500">Projects Completed</div>
+                        </div>
+                        <div class="h-9 w-px bg-zinc-800"></div>
+                        <div>
+                            <div class="text-amber-400 font-mono text-xl">100%</div>
+                            <div class="text-zinc-500">Learning in Public</div>
+                        </div>
+                    </div>
+                </div>
 
-<section>
-  <div class="wrap">
-    <div class="collab">
-      <h2>Let's learn together</h2>
-      <p>I believe in collaboration and peer-to-peer learning. Open to working with other developers, contributing to open-source projects, and having real discussions about the craft — we grow faster together than alone.</p>
-    </div>
-  </div>
-</section>
+                <!-- Hero Image -->
+                <div class="md:col-span-5 flex justify-center md:justify-end">
+                    <div class="relative">
+                        <div
+                            class="absolute -inset-6 bg-gradient-to-br from-amber-400/10 to-transparent rounded-[4rem] -rotate-6">
+                        </div>
+                        <div class="relative rounded-3xl overflow-hidden border border-zinc-700 shadow-2xl">
+                            <img src="/joan-iduemre.png" alt="Joan Iduemre - Aspiring Frontend Developer"
+                                class="w-full max-w-md h-auto object-cover">
+                        </div>
 
-<section id="contact" class="contact">
-  <div class="wrap">
-    <div class="section-head"><span class="tag">04</span><h2>Get in touch</h2></div>
-    <p>Questions, suggestions, or just want to connect? Raise an issue on GitHub — I'm always glad to hear from fellow developers and enthusiasts.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="https://github.com/joan-iduemre" target="_blank" rel="noopener">Visit GitHub profile</a>
-      <a class="btn btn-ghost" href="https://github.com/joan-iduemre/joan-iduemre/issues" target="_blank" rel="noopener">Raise an issue</a>
-    </div>
-  </div>
-</section>
+                        <!-- Floating badge -->
+                        <div
+                            class="absolute -bottom-4 -right-4 glass border border-zinc-700 rounded-3xl px-6 py-3 flex items-center gap-x-3 shadow-xl">
+                            <div class="flex -space-x-2">
+                                <div class="w-6 h-6 bg-emerald-400 rounded-2xl ring-2 ring-[#111]"></div>
+                            </div>
+                            <div class="text-sm">
+                                <div class="font-medium">Currently learning</div>
+                                <div class="text-zinc-400 text-xs">JavaScript • Responsive Design</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<footer>
-  <div class="wrap">
-    <p>Joan Iduemre — programming journey, documented.</p>
-    <p>Built with HTML &amp; CSS</p>
-  </div>
-</footer>
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-10 left-1/2 hidden md:flex flex-col items-center gap-y-2">
+                <div class="text-xs tracking-widest text-zinc-500">SCROLL TO EXPLORE</div>
+                <div class="w-px h-12 bg-gradient-to-b from-transparent via-zinc-400 to-transparent"></div>
+            </div>
+        </section>
 
-</body>
+        <!-- ABOUT -->
+        <section id="about" class="py-28 border-t border-zinc-900">
+            <div class="max-w-screen-2xl mx-auto px-6">
+                <div class="grid md:grid-cols-12 gap-16 items-center">
+                    <div class="md:col-span-5">
+                        <h2 class="section-header heading-font text-5xl font-semibold tracking-tighter mb-8">My Story
+                        </h2>
+                        <div class="prose prose-zinc prose-invert max-w-none text-lg">
+                            <p class="text-zinc-300">
+                                I'm passionate about technology and its potential to make a positive impact on people's
+                                lives.
+                                With a strong desire to learn and grow, I'm dedicated to honing my skills in frontend
+                                development.
+                            </p>
+                            <p class="text-zinc-300">
+                                My journey began with curiosity about how websites work. What started as simple HTML
+                                experiments has grown into a consistent daily practice of building real projects and
+                                documenting my progress.
+                            </p>
+                        </div>
+
+                        <div class="mt-12 flex flex-wrap gap-8">
+                            <div>
+                                <div class="uppercase text-xs tracking-widest text-zinc-500 mb-1">Focus</div>
+                                <div class="text-2xl font-medium">Frontend Development</div>
+                            </div>
+                            <div>
+                                <div class="uppercase text-xs tracking-widest text-zinc-500 mb-1">Current Stage</div>
+                                <div class="text-2xl font-medium">Building Foundations</div>
+                            </div>
+                            <div>
+                                <div class="uppercase text-xs tracking-widest text-zinc-500 mb-1">Mindset</div>
+                                <div class="text-2xl font-medium">Growth through practice</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-7">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="glass p-8 rounded-3xl border border-zinc-800">
+                                <i class="fa-solid fa-lightbulb text-4xl text-amber-400 mb-6"></i>
+                                <h3 class="text-xl font-semibold mb-3">Curiosity First</h3>
+                                <p class="text-zinc-400">Every project starts with a question: "How does this work?" I
+                                    turn that curiosity into code.</p>
+                            </div>
+                            <div class="glass p-8 rounded-3xl border border-zinc-800">
+                                <i class="fa-solid fa-arrow-trend-up text-4xl text-amber-400 mb-6"></i>
+                                <h3 class="text-xl font-semibold mb-3">Consistent Practice</h3>
+                                <p class="text-zinc-400">I believe steady daily progress beats occasional bursts of
+                                    intense effort.</p>
+                            </div>
+                            <div class="glass p-8 rounded-3xl border border-zinc-800">
+                                <i class="fa-solid fa-users text-4xl text-amber-400 mb-6"></i>
+                                <h3 class="text-xl font-semibold mb-3">Collaboration</h3>
+                                <p class="text-zinc-400">I'm open to working with others, contributing to open source,
+                                    and learning together.</p>
+                            </div>
+                            <div class="glass p-8 rounded-3xl border border-zinc-800">
+                                <i class="fa-solid fa-book text-4xl text-amber-400 mb-6"></i>
+                                <h3 class="text-xl font-semibold mb-3">Documentation</h3>
+                                <p class="text-zinc-400">I document my learning publicly so others can follow along and
+                                    I can track my growth.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="py-24 bg-[#111111]">
+            <div class="max-w-screen-2xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row gap-16">
+                    <div class="md:w-80 flex-shrink-0">
+                        <h2 class="section-header heading-font text-5xl font-semibold tracking-tighter">Skills &amp;
+                            Tools</h2>
+                        <p class="text-zinc-400 mt-4">Technologies I'm actively using and exploring.</p>
+                    </div>
+
+                    <div class="flex-1 grid grid-cols-2 md:grid-cols-3 gap-6">
+                        <!-- Skill -->
+                        <div class="bg-[#1A1A1A] p-6 rounded-3xl">
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <span
+                                        class="inline-block px-3 py-1 text-xs font-medium rounded-2xl bg-emerald-400/10 text-emerald-400">Comfortable</span>
+                                </div>
+                                <i class="fa-brands fa-html5 text-4xl text-orange-500"></i>
+                            </div>
+                            <div class="font-semibold text-xl">HTML5</div>
+                            <div class="text-sm text-zinc-500">Semantic markup, accessibility basics</div>
+                        </div>
+
+                        <div class="bg-[#1A1A1A] p-6 rounded-3xl">
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <span
+                                        class="inline-block px-3 py-1 text-xs font-medium rounded-2xl bg-emerald-400/10 text-emerald-400">Comfortable</span>
+                                </div>
+                                <i class="fa-brands fa-css3-alt text-4xl text-blue-500"></i>
+                            </div>
+                            <div class="font-semibold text-xl">CSS</div>
+                            <div class="text-sm text-zinc-500">Flexbox, Grid, responsive design</div>
+                        </div>
+
+                        <div class="bg-[#1A1A1A] p-6 rounded-3xl">
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <span
+                                        class="inline-block px-3 py-1 text-xs font-medium rounded-2xl bg-amber-400/10 text-amber-400">Practicing</span>
+                                </div>
+                                <i class="fa-brands fa-square-js text-4xl text-yellow-400"></i>
+                            </div>
+                            <div class="font-semibold text-xl">JavaScript</div>
+                            <div class="text-sm text-zinc-500">Learning fundamentals</div>
+                        </div>
+
+                        <div class="bg-[#1A1A1A] p-6 rounded-3xl">
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <span
+                                        class="inline-block px-3 py-1 text-xs font-medium rounded-2xl bg-sky-400/10 text-sky-400">Comfortable</span>
+                                </div>
+                                <i class="fa-brands fa-git-alt text-4xl text-orange-600"></i>
+                            </div>
+                            <div class="font-semibold text-xl">Git &amp; GitHub</div>
+                            <div class="text-sm text-zinc-500">Version control, GitHub Pages</div>
+                        </div>
+
+                        <div class="bg-[#1A1A1A] p-6 rounded-3xl">
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <span
+                                        class="inline-block px-3 py-1 text-xs font-medium rounded-2xl bg-violet-400/10 text-violet-400">Exploring</span>
+                                </div>
+                                <span class="text-3xl font-bold text-zinc-400">RWD</span>
+                            </div>
+                            <div class="font-semibold text-xl">Responsive Design</div>
+                            <div class="text-sm text-zinc-500">Mobile-first layouts</div>
+                        </div>
+
+                        <div
+                            class="bg-[#1A1A1A] p-6 rounded-3xl border border-dashed border-zinc-700 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-amber-400 text-sm font-medium">Next up</div>
+                                <div class="text-2xl font-semibold mt-2">React.js</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LEARNING JOURNEY -->
+        <section id="journey" class="py-28">
+            <div class="max-w-screen-2xl mx-auto px-6">
+                <div class="flex justify-between items-end mb-12">
+                    <h2 class="section-header heading-font text-5xl font-semibold tracking-tighter">Learning Journey
+                    </h2>
+                    <a href="https://github.com/joan-iduemre" target="_blank"
+                        class="hidden sm:flex items-center gap-x-2 text-sm group">
+                        <span class="group-hover:underline">View full activity on GitHub</span>
+                        <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <div class="max-w-3xl mx-auto relative pl-8 border-l border-zinc-700">
+                    <!-- Timeline Item -->
+                    <div class="mb-16 relative">
+                        <div
+                            class="timeline-dot absolute -left-[9px] w-4 h-4 bg-amber-400 rounded-full border-4 border-[#09090B]">
+                        </div>
+                        <div class="pl-8">
+                            <div class="text-xs uppercase tracking-widest text-amber-400 mb-1">2024 — Beginning</div>
+                            <div class="text-2xl font-medium">Discovered programming</div>
+                            <p class="text-zinc-400 mt-3">Started exploring how the web works and decided to pursue
+                                frontend development.</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-16 relative">
+                        <div
+                            class="timeline-dot absolute -left-[9px] w-4 h-4 bg-amber-400 rounded-full border-4 border-[#09090B]">
+                        </div>
+                        <div class="pl-8">
+                            <div class="text-xs uppercase tracking-widest text-amber-400 mb-1">First Project</div>
+                            <div class="text-2xl font-medium">Cafe Menu</div>
+                            <p class="text-zinc-400 mt-3">Built my first HTML page — a cafe menu. Learned headings,
+                                lists, images, and basic structure.</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-16 relative">
+                        <div
+                            class="timeline-dot absolute -left-[9px] w-4 h-4 bg-amber-400 rounded-full border-4 border-[#09090B]">
+                        </div>
+                        <div class="pl-8">
+                            <div class="text-xs uppercase tracking-widest text-amber-400 mb-1">Second Project</div>
+                            <div class="text-2xl font-medium">Cat App</div>
+                            <p class="text-zinc-400 mt-3">Created an interactive page with photos, lists, and a
+                                submission form.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div
+                            class="timeline-dot absolute -left-[9px] w-4 h-4 bg-amber-400 rounded-full border-4 border-[#09090B]">
+                        </div>
+                        <div class="pl-8">
+                            <div class="text-xs uppercase tracking-widest text-amber-400 mb-1">Recent</div>
+                            <div class="text-2xl font-medium">Formify</div>
+                            <p class="text-zinc-400 mt-3">Built a signup form and deployed it with GitHub Pages.
+                                Practiced version control and CI/CD basics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="py-28 bg-[#111111]">
+            <div class="max-w-screen-2xl mx-auto px-6">
+                <div class="flex justify-between items-baseline mb-12">
+                    <h2 class="section-header heading-font text-5xl font-semibold tracking-tighter">Featured Projects
+                    </h2>
+                    <div class="text-zinc-400 text-sm">Learning by shipping</div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Project 1: Cafe Menu -->
+                    <div class="project-card bg-[#1A1A1A] rounded-3xl overflow-hidden border border-zinc-800 group">
+                        <div class="h-56 bg-zinc-900 flex items-center justify-center relative">
+                            <div class="text-6xl text-amber-300/30 font-mono">☕</div>
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60">
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex gap-2 mb-4">
+                                <span class="text-xs px-3 py-1 bg-zinc-800 rounded-full">HTML</span>
+                            </div>
+                            <h3 class="text-2xl font-semibold mb-2">Cafe Menu</h3>
+                            <p class="text-zinc-400 line-clamp-3">A clean cafe menu displaying coffee options and
+                                prices. First hands-on project practicing HTML structure and content organization.</p>
+
+                            <div class="mt-8 flex gap-3">
+                                <a href="https://joan-iduemre.github.io/cafe-menu" target="_blank"
+                                    class="flex-1 py-3.5 text-center text-sm font-medium border border-amber-400 text-amber-400 rounded-2xl hover:bg-amber-400 hover:text-black transition-all">
+                                    Live Demo
+                                </a>
+                                <a href="https://github.com/joan-iduemre/cafe-menu" target="_blank"
+                                    class="flex-1 py-3.5 text-center text-sm font-medium border border-zinc-700 hover:border-white rounded-2xl transition-all">
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Cat App -->
+                    <div class="project-card bg-[#1A1A1A] rounded-3xl overflow-hidden border border-zinc-800 group">
+                        <div class="h-56 bg-zinc-900 flex items-center justify-center relative overflow-hidden">
+                            <div class="text-7xl">🐱</div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex gap-2 mb-4">
+                                <span class="text-xs px-3 py-1 bg-zinc-800 rounded-full">HTML</span>
+                                <span class="text-xs px-3 py-1 bg-zinc-800 rounded-full">CSS</span>
+                            </div>
+                            <h3 class="text-2xl font-semibold mb-2">Cat App</h3>
+                            <p class="text-zinc-400 line-clamp-3">Interactive page with cat photos, love/hate lists, and
+                                a form to submit new cat photos. Introduced basic interactivity concepts.</p>
+
+                            <div class="mt-8 flex gap-3">
+                                <a href="https://joan-iduemre.github.io/cat-app" target="_blank"
+                                    class="flex-1 py-3.5 text-center text-sm font-medium border border-amber-400 text-amber-400 rounded-2xl hover:bg-amber-400 hover:text-black transition-all">
+                                    Live Demo
+                                </a>
+                                <a href="https://github.com/joan-iduemre/cat-app" target="_blank"
+                                    class="flex-1 py-3.5 text-center text-sm font-medium border border-zinc-700 hover:border-white rounded-2xl transition-all">
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Formify -->
+                    <div class="project-card bg-[#1A1A1A] rounded-3xl overflow-hidden border border-zinc-800 group">
+                        <div class="h-56 bg-zinc-900 flex items-center justify-center relative">
+                            <div class="text-zinc-700 text-5xl font-light">FORM</div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex gap-2 mb-4">
+                                <span class="text-xs px-3 py-1 bg-zinc-800 rounded-full">HTML</span>
+                                <span class="text-xs px-3 py-1 bg-zinc-800 rounded-full">CSS</span>
+                                <span class="text-xs px-3 py-1 bg-zinc-800 rounded-full">Git</span>
+                            </div>
+                            <h3 class="text-2xl font-semibold mb-2">Formify</h3>
+                            <p class="text-zinc-400 line-clamp-3">A clean signup form built to practice forms, styling,
+                                Git version control, and deployment with GitHub Pages.</p>
+
+                            <div class="mt-8 flex gap-3">
+                                <a href="https://joan-iduemre.github.io/formify" target="_blank"
+                                    class="flex-1 py-3.5 text-center text-sm font-medium border border-amber-400 text-amber-400 rounded-2xl hover:bg-amber-400 hover:text-black transition-all">
+                                    Live Demo
+                                </a>
+                                <a href="https://github.com/joan-iduemre/formify" target="_blank"
+                                    class="flex-1 py-3.5 text-center text-sm font-medium border border-zinc-700 hover:border-white rounded-2xl transition-all">
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="py-28">
+            <div class="max-w-screen-2xl mx-auto px-6">
+                <div class="max-w-2xl mx-auto text-center">
+                    <h2 class="heading-font text-5xl font-semibold tracking-tighter mb-6">Let's Connect</h2>
+                    <p class="text-xl text-zinc-400">
+                        I'm always excited to connect with fellow developers, learn from the community, and collaborate
+                        on meaningful projects.
+                        Whether you have feedback on my work or just want to say hello, feel free to reach out.
+                    </p>
+
+                    <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="https://github.com/joan-iduemre" target="_blank"
+                            class="flex items-center justify-center gap-x-3 px-10 py-6 rounded-3xl border border-zinc-700 hover:border-zinc-300 transition-colors">
+                            <i class="fa-brands fa-github text-2xl"></i>
+                            <div>
+                                <div class="font-medium">GitHub</div>
+                                <div class="text-xs text-zinc-500">@joan-iduemre</div>
+                            </div>
+                        </a>
+
+                        <a href="mailto:your.email@example.com"
+                            class="flex items-center justify-center gap-x-3 px-10 py-6 rounded-3xl border border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-black transition-all">
+                            <i class="fa-solid fa-envelope text-2xl"></i>
+                            <span class="font-medium">Send me an email</span>
+                        </a>
+                    </div>
+
+                    <div class="mt-16 text-xs text-zinc-500">
+                        Open to feedback • Always learning • Happy to collaborate
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="bg-black py-12 border-t border-zinc-900">
+            <div class="max-w-screen-2xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-y-6">
+                    <div class="flex items-center gap-x-3">
+                        <div
+                            class="w-6 h-6 rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-600 flex items-center justify-center text-xs font-bold">
+                            J</div>
+                        <div>
+                            <span class="font-medium">Joan Iduemre</span>
+                            <span class="text-xs text-zinc-500 block">© 2026</span>
+                        </div>
+                    </div>
+
+                    <div class="text-center text-sm text-zinc-500">
+                        Built with pure HTML + Tailwind CSS •
+                        <span class="text-amber-400">Always learning. Always building.</span>
+                    </div>
+
+                    <div class="flex items-center gap-x-6 text-xl">
+                        <a href="https://github.com/joan-iduemre" target="_blank"
+                            class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Tailwind script already loaded via CDN
+
+            function initTailwind() {
+                // Any additional Tailwind config if needed
+            }
+
+            // Smooth scroll
+            function smoothScrollTo(sectionId) {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    const navHeight = 80;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.scrollY - navHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+
+            function toggleMobileMenu() {
+                const mobileMenu = document.getElementById('mobile-menu');
+                mobileMenu.classList.toggle('hidden');
+            }
+
+            // Navbar scroll effect
+            function handleNavbarScroll() {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-2xl', 'bg-[#09090B]');
+                } else {
+                    navbar.classList.remove('shadow-2xl', 'bg-[#09090B]');
+                }
+            }
+
+            // Keyboard accessibility
+            function handleKeyboard(e) {
+                if (e.key === "Escape") {
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            }
+
+            // Initialize everything
+            function initialize() {
+                window.addEventListener('scroll', handleNavbarScroll);
+                document.addEventListener('keydown', handleKeyboard);
+
+                // Mobile menu button
+                const mobileBtn = document.getElementById('mobile-menu-button');
+                mobileBtn.addEventListener('click', toggleMobileMenu);
+
+                // Active nav highlighting (basic)
+                const sections = ['home', 'about', 'journey', 'projects', 'contact'];
+                const navLinks = document.querySelectorAll('.nav-link');
+
+                window.addEventListener('scroll', () => {
+                    let current = '';
+                    sections.forEach(sectionId => {
+                        const section = document.getElementById(sectionId);
+                        if (section) {
+                            const sectionTop = section.offsetTop;
+                            if (scrollY >= sectionTop - 200) {
+                                current = sectionId;
+                            }
+                        }
+                    });
+
+                    navLinks.forEach(link => {
+                        link.classList.remove('text-amber-400');
+                        if (link.getAttribute('href') === `#${current}`) {
+                            link.classList.add('text-amber-400');
+                        }
+                    });
+                });
+
+                // Respect reduced motion
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    console.log('%cReduced motion preference detected. Some animations disabled.', 'color: #888');
+                }
+
+                console.log('%c✅ Joan Iduemre Portfolio loaded successfully. Honest, clean, and professional.', 'color: #fcd34d; font-family: monospace');
+            }
+
+            // Boot the app
+            window.onload = initialize;
+        </script>
+    </body>
+
 </html>
-
