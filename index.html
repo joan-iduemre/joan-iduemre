@@ -1,1 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joan Iduemre — Programming Journey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF7EF;
+    --ink:#1F2A1E;
+    --moss:#2F4F33;
+    --sprout:#7CB342;
+    --sprout-soft:#E4EFD6;
+    --clay:#C7724C;
+    --line: rgba(31,42,30,0.14);
+    --maxw: 880px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.6;
+  }
+
+  ::selection{background:var(--sprout-soft); color:var(--moss);}
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    color:var(--moss);
+    letter-spacing:-0.01em;
+  }
+
+  a{color:var(--moss);}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:10;
+    background:rgba(250,247,239,0.85);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  .brand{font-family:'Fraunces', serif; font-weight:600; font-size:1.1rem; color:var(--ink);}
+  .brand em{font-style:normal; color:var(--sprout);}
+  nav ul{list-style:none; display:flex; gap:28px; margin:0; padding:0;}
+  nav a{text-decoration:none; color:var(--ink); font-size:0.92rem; font-weight:500; opacity:0.8; transition:opacity .15s;}
+  nav a:hover, nav a:focus-visible{opacity:1;}
+
+  /* ---------- Hero ---------- */
+  header.hero{padding:84px 0 64px; position:relative; overflow:hidden;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.82rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--moss); background:var(--sprout-soft);
+    padding:6px 14px; border-radius:999px; margin-bottom:22px;
+  }
+  .eyebrow::before{content:"●"; color:var(--sprout); font-size:0.6rem;}
+
+  .hero-grid{display:grid; grid-template-columns: 1fr auto; gap:40px; align-items:center;}
+  .hero h1{font-size:clamp(2.4rem, 5vw, 3.6rem); line-height:1.05; font-weight:600;}
+  .hero h1 .accent{color:var(--sprout); font-style:italic; font-weight:500;}
+  .hero p.lede{margin-top:20px; max-width:50ch; font-size:1.08rem; color:rgba(31,42,30,0.78);}
+
+  .avatar-frame{
+    width:148px; height:148px; border-radius:50%;
+    border:3px solid var(--moss);
+    padding:6px;
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+    flex-shrink:0;
+  }
+  .avatar-frame img{
+    width:100%; height:100%; object-fit:cover; border-radius:50%;
+    display:block;
+  }
+  .avatar-fallback{
+    width:100%; height:100%; border-radius:50%;
+    background:linear-gradient(155deg, var(--sprout-soft), var(--paper));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-size:2.6rem; color:var(--moss); font-weight:600;
+  }
+
+  .hero-meta{display:flex; gap:28px; margin-top:36px; flex-wrap:wrap;}
+  .hero-meta div{font-size:0.85rem; color:rgba(31,42,30,0.6);}
+  .hero-meta strong{display:block; font-family:'Fraunces',serif; font-size:1.5rem; color:var(--ink); font-weight:600;}
+
+  /* ---------- Section shell ---------- */
+  section{padding:56px 0;}
+  section + section{border-top:1px solid var(--line);}
+  .section-head{display:flex; align-items:baseline; gap:14px; margin-bottom:30px;}
+  .section-head .tag{font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--clay);}
+  .section-head h2{font-size:1.9rem; font-weight:600;}
+
+  /* ---------- About ---------- */
+  .about p{max-width:62ch; font-size:1.02rem; color:rgba(31,42,30,0.85);}
+
+  /* ---------- Goals ---------- */
+  .goal-card{
+    border:1px solid var(--line); border-radius:14px; padding:26px 28px;
+    background:#fff; display:flex; gap:18px; align-items:flex-start;
+  }
+  .goal-card .mark{
+    font-family:'Fraunces',serif; font-size:1.6rem; color:var(--sprout); flex-shrink:0; line-height:1;
+  }
+  .goal-card h3{font-size:1.15rem; margin-bottom:8px; font-weight:600;}
+  .goal-card p{margin:0; color:rgba(31,42,30,0.75); font-size:0.96rem;}
+
+  /* ---------- Projects ---------- */
+  .projects-grid{display:grid; gap:22px;}
+  .project-card{
+    border:1px solid var(--line); border-radius:16px; padding:30px 32px;
+    background:#fff; position:relative; transition:border-color .15s, transform .15s;
+  }
+  .project-card:hover{border-color:var(--sprout); transform:translateY(-2px);}
+  .project-card .pnum{
+    font-family:'Fraunces',serif; font-size:0.85rem; color:var(--clay); font-weight:600;
+    letter-spacing:0.04em;
+  }
+  .project-card h3{font-size:1.4rem; margin-top:6px; margin-bottom:12px; font-weight:600;}
+  .project-card p{color:rgba(31,42,30,0.78); font-size:0.97rem; margin:0 0 18px;}
+  .project-links{display:flex; gap:18px; flex-wrap:wrap;}
+  .project-links a{
+    font-size:0.88rem; font-weight:600; text-decoration:none;
+    border-bottom:1.5px solid var(--sprout); padding-bottom:2px;
+  }
+  .project-links a:hover{color:var(--sprout);}
+
+  /* ---------- Collaboration ---------- */
+  .collab{
+    background:var(--moss); color:#F4F1E8; border-radius:18px; padding:44px 40px;
+  }
+  .collab h2{color:#fff; font-size:1.7rem;}
+  .collab p{color:rgba(244,241,232,0.85); max-width:58ch; margin-top:14px; font-size:1rem;}
+
+  /* ---------- Contact ---------- */
+  .contact{text-align:left;}
+  .contact h2{font-size:2rem;}
+  .contact p{color:rgba(31,42,30,0.78); max-width:50ch; margin-top:12px;}
+  .cta-row{display:flex; gap:16px; margin-top:26px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; text-decoration:none; font-weight:600; font-size:0.95rem;
+    padding:13px 26px; border-radius:10px; transition:opacity .15s, transform .15s;
+  }
+  .btn-primary{background:var(--moss); color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px); opacity:0.92;}
+  .btn-ghost{border:1.5px solid var(--line); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--moss);}
+
+  footer{padding:32px 0 48px; border-top:1px solid var(--line);}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  footer p{margin:0; font-size:0.85rem; color:rgba(31,42,30,0.55);}
+
+  @media (max-width: 680px){
+    .hero-grid{grid-template-columns:1fr; gap:28px;}
+    .avatar-frame{order:-1;}
+    .hero-meta{gap:22px;}
+    nav ul{gap:16px;}
+    .collab{padding:32px 24px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Joan <em>Iduemre</em></div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#goals">Goals</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Newbie developer, on the record</span>
+      <h1>Learning out loud,<br>one repo at a <span class="accent">time.</span></h1>
+      <p class="lede">I'm Joan Iduemre — new to programming, aiming for frontend development, and documenting every step here so the progress is impossible to fake and easy to follow.</p>
+      <div class="hero-meta">
+        <div><strong>3</strong>Projects shipped</div>
+        <div><strong>HTML/CSS/JS</strong>Current focus</div>
+        <div><strong>React · Vue</strong>Up next</div>
+      </div>
+    </div>
+    <div class="avatar-frame">
+      <div class="avatar-fallback">JI</div>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="section-head"><span class="tag">01</span><h2>About me</h2></div>
+    <p>I'm passionate about technology and what it can do for people's everyday lives. I'm dedicated to honing my skills across programming languages and frameworks — and I'd rather show the work in progress than wait for a polished version of myself.</p>
+  </div>
+</section>
+
+<section id="goals">
+  <div class="wrap">
+    <div class="section-head"><span class="tag">02</span><h2>What I'm working toward</h2></div>
+    <div class="goal-card">
+      <span class="mark">＋</span>
+      <div>
+        <h3>Frontend development, properly</h3>
+        <p>Mastering HTML, CSS, and JavaScript to build interfaces that feel good to use — then growing into a modern framework like React or Vue.js.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head"><span class="tag">03</span><h2>Projects</h2></div>
+    <div class="projects-grid">
+
+      <article class="project-card">
+        <span class="pnum">Project 01</span>
+        <h3>Formify</h3>
+        <p>A simple signup form built to learn HTML, CSS, and the fundamentals of Git and GitHub — including setting up a CI/CD pipeline with GitHub Pages. First real practice with version control and repo management.</p>
+        <div class="project-links">
+          <a href="https://joan-iduemre.github.io/formify" target="_blank" rel="noopener">Live demo →</a>
+          <a href="https://github.com/joan-iduemre/formify" target="_blank" rel="noopener">Source code →</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <span class="pnum">Project 02</span>
+        <h3>Cat App</h3>
+        <p>An interactive page of cat photos, lists, and a submission form. Visitors can browse a gallery, check out things cats love (and the top three they hate), and submit their own cat's photo and personality.</p>
+        <div class="project-links">
+          <a href="https://joan-iduemre.github.io/cat-app" target="_blank" rel="noopener">Live demo →</a>
+          <a href="https://github.com/joan-iduemre/cat-app" target="_blank" rel="noopener">Source code →</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <span class="pnum">Project 03</span>
+        <h3>Cafe Menu</h3>
+        <p>A coffee shop menu built in plain HTML — headings, lists, and sections organizing drinks and prices. The project that sharpened my grip on HTML syntax, structure, and styling fundamentals.</p>
+        <div class="project-links">
+          <a href="https://joan-iduemre.github.io/cafe-menu" target="_blank" rel="noopener">Live demo →</a>
+          <a href="https://github.com/joan-iduemre/cafe-menu" target="_blank" rel="noopener">Source code →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="collab">
+      <h2>Let's learn together</h2>
+      <p>I believe in collaboration and peer-to-peer learning. Open to working with other developers, contributing to open-source projects, and having real discussions about the craft — we grow faster together than alone.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="section-head"><span class="tag">04</span><h2>Get in touch</h2></div>
+    <p>Questions, suggestions, or just want to connect? Raise an issue on GitHub — I'm always glad to hear from fellow developers and enthusiasts.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://github.com/joan-iduemre" target="_blank" rel="noopener">Visit GitHub profile</a>
+      <a class="btn btn-ghost" href="https://github.com/joan-iduemre/joan-iduemre/issues" target="_blank" rel="noopener">Raise an issue</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Joan Iduemre — programming journey, documented.</p>
+    <p>Built with HTML &amp; CSS</p>
+  </div>
+</footer>
+
+</body>
+</html>
 
